@@ -1,0 +1,24 @@
+name: My Github workflow
+run-name: ${{ github.actor }} is testing My Github workflow 🚀
+on:
+  push:
+    branches:
+      - main
+
+# Environment variables
+env:
+  PROJECT_NAME: github-actions-demo
+  COURSE: LLMOps-GitHub-Actions-Learning
+
+jobs:
+  my-example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Checkout the repo"
+      - name: Checkout Repo 
+        uses: actions/checkout@v4
+      - run: printenv
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}      
+      - run: echo "env variables Project Name - ${{ env.PROJECT_NAME  }}, and Course Name ${{ env.COURSE  }}"
